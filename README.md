@@ -1,6 +1,6 @@
 # Simple Note-Taking API
 
-This project is a RESTful API for a simple note-taking application built using Node.js and Express. The application allows users to create, fetch, query, and update notes. The API is designed without user management and does not include a UI. Swagger UI is integrated for easy API testing.
+This project is a RESTful API for a simple note-taking application built using Node.js and Express. The application allows users to create, fetch, query, and update notes. The API is designed without user management and does not include a UI. Swagger UI is integrated to allow easy API testing.
 
 ## Table of Contents
 
@@ -24,13 +24,13 @@ This API allows users to manage notes through basic CRUD operations. It supports
 3. **Query Notes by Title Substring**: Search for notes by a substring in the title, returning all matching results.
 4. **Update Note**: Modify the title and body of an existing note identified by its ID.
 
-No UI is developed for this application, but Swagger UI is provided to facilitate testing.
+No UI has been developed for this application, but Swagger UI has been provided to facilitate testing.
 
 ## Core Features
 
-- **Create Note**: Allows the creation of a new note with a title and body.
+- **Create Note**: Allows creating a new note with a title and body.
 - **Fetch Note by ID**: Enables fetching a note using its primary key (ID).
-- **Query Notes by Title Substring**: Lets you search notes based on a substring in the title.
+- **Query Notes by Title Substring**: This lets you search notes based on a substring in the title.
 - **Update Note**: Provides the ability to update the title and body of an existing note.
 
 ## Models
@@ -52,8 +52,8 @@ No UI is developed for this application, but Swagger UI is provided to facilitat
 
 1. **Clone the Repository**:
     ```bash
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone git@github.com:raghavkumar09/note-taking-api.git
+    cd note-taking-api
     ```
 
 2. **Install Dependencies**:
