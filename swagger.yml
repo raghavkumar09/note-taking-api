@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: Simple Note Taking API
+  version: 1.0.0
+  description: API documentation for a simple note-taking application
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+paths:
+  /notes:
+    post:
+      summary: Create a new note
+      tags: [Notes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the note
+                body:
+                  type: string
+                  description: The content of the note
+            description: Create a new note
+      responses:
+        201:
+          description: The note was successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+    
+    get:
+      summary: Query notes by title substring
+      tags: [Notes]
+      parameters:
+        - in: query
+          name: title
+          schema:
+            type: string
+          required: false
+          description: Substring to query notes by title
+      responses:
+        200:
+          description: List of notes that match the query
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Note'
+
+  /notes/{id}:
+    get:
+      summary: Get a note by ID
+      tags: [Notes]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: The note ID
+      responses:
+        200:
+          description: The note description by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+        404:
+          description: The note was not found
+
+    put:
+      summary: Update a note by ID
+      tags: [Notes]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: The note ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the note
+                body:
+                  type: string
+                  description: The content of the note
+      responses:
+        200:
+          description: The note was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+        404:
+          description: The note was not found
+
+components:
+  schemas:
+    Note:
+      type: object
+      required:
+        - title
+        - body
+      properties:
+        id:
+          type: string
+          description: The auto-generated id of the note
+        title:
+          type: string
+          description: The title of the note
+        body:
+          type: string
+          description: The content of the note
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the note was created
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time the note was last updated
+      example:
+        id: d5fE_asz
+        title: Sample Note
+        body: This is a sample note.
+        created_at: 2024-08-12T09:12:28.673Z
+        updated_at: 2024-08-12T09:12:28.673Z
